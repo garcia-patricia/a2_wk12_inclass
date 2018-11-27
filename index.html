@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video with Vue</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+<main id="app">
+  <h4 class="welcome-message">{{ welcomemessage }}</h4>
+  <ul>
+    <!-- use colon infront of element to bind it (( to what though , class!))? -->
+    <li v-for="video in videodata">
+      <button v-on:click="fetchSingle" :data-movie="video.id" class="more-details">More Details...</button>
+      <a :href="video.vid_path" v-on:click="loadMovie">
+        <img :src=" 'images/' + video.vid_thumb" alt="movie poster">
+      </a>
+      <p>Pure genre data here</p>
+    </li>
+  </ul>
+
+
+  <p class="instructions">
+    <i>Click on a poster to preview the movie!</i>
+  </p>
+
+  <section class="hidden-movies" :class="{'show-movie' : showDetails }">
+    <h3 class="movie-title">{{ videotitle }}</h3>
+    <video :src=" 'video/' + videosource " autoplay></video>
+    <div class="move-details">
+      <p>{{ videodescription }}</p>
+    </div>
+  </section>
+
+  <div class="up-arrow">
+    <span>^</span>
+  </div>
+</main>
+
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
