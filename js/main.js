@@ -5,15 +5,12 @@
 
         data : {
             welcomemessage : "howdy",
-
             videodata : [],
             singledata : [],
 
-            videotitle = "",
+            videotitle : "",
             videodescription : "",
             videosource : "",
-
-
             showDetails : false 
         },
         created : function() {
@@ -36,6 +33,7 @@
                 e.preventDefault(); // block a page reload (anchor tag default behaviour)
 
                 dataKey = e.currentTarget.getAttribute('href');
+
                 currentData = this.videodata.filter(video => video.vid_path === dataKey);
 
                 this.videotitle = currentData[0].vid_name;
@@ -48,7 +46,7 @@
             },
             fetchMovieData(movie){
                 //ternary statement, its a shorthand if else, left of the : is true, right is false
-                let url = movie ? `./includes/index.php?=${movie}` : './includes/index.php'
+                let url = movie ? `./includes/index.php?=${movie}` : './includes/index.php';
 
                 //go and fetch data
                 fetch(url)
